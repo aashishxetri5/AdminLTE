@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegistrationRequest;
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Hash;
 
-class RegistrationController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("content.register");
+        return view('login');
     }
 
     /**
@@ -21,16 +22,27 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        return view('content.register');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(RegistrationRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
-        return back()->with('data', $data);
+        $credentails = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        $user = User::where('username', $request->username)->first();
+
+        if (!$user)
+            return redirect()->back()->with('error', "User doesn't exist");
+
+        if (!Hash::check($request->password, $user->password)) {
+            return redirect('/dashboard');
+        }
     }
 
     /**

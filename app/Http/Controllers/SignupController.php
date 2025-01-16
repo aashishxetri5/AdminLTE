@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegistrationRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class RegistrationController extends Controller
+class SignupController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("content.register");
+        //
     }
 
     /**
@@ -21,16 +19,15 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        return view('content.register');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(RegistrationRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
-        return back()->with('data', $data);
+        //
     }
 
     /**
