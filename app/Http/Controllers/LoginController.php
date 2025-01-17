@@ -41,6 +41,7 @@ class LoginController extends Controller
             return redirect()->back()->with('error', "User doesn't exist");
 
         if (!Hash::check($request->password, $user->password)) {
+            $request->session()->put('loggedInUser', $user->id);
             return redirect('/dashboard');
         }
     }
