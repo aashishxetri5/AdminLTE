@@ -15008,8 +15008,7 @@ html.maximized-card {
   min-height: 100vh;
 }
 
-.login-box,
-.register-box {
+.login-box{
   width: 360px;
 }
 @media (max-width: 576px) {

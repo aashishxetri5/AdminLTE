@@ -25,9 +25,8 @@ class RegistrationRequest extends FormRequest
             "firstname" => ["required", "regex:/[a-zA-Z]+$/"],
             "lastname" => ["required", "regex:/[a-zA-Z]+$/"],
             "username" => ["required"],
+            "password" => ["required", "min:5"],
             "city" => ["required"],
-            "state" => ["nullable"],
-            "zip" => ["nullable"],
             "tnc" => ["required"],
         ];
     }

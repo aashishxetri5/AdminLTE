@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegistrationRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SignupController extends Controller
@@ -11,7 +13,7 @@ class SignupController extends Controller
      */
     public function index()
     {
-        //
+        return view("signup");
     }
 
     /**
@@ -25,9 +27,16 @@ class SignupController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RegistrationRequest $request)
     {
-        //
+        $signupCredentials = $request->validated();
+
+        $signupCredentials["password"] = bcrypt($signupCredentials["password"]);
+        $signupCredentials['tnc'] = $request->has('tnc') ? 1 : 0;
+        
+        User::create($signupCredentials);
+
+        return redirect()->route("login.index")->with("success", "created successfully");
     }
 
     /**
