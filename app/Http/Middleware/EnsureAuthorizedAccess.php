@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Symfony\Component\HttpFoundation\Response;
 
-class LoginMiddleware
+class EnsureAuthorizedAccess
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,8 @@ class LoginMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (session()->has("loggedInUser")) {
-
-            if ($request->path() === "signout") {
-                return $next($request);
-            }
-            return redirect(Route("dashboard"));
-        } else
             return $next($request);
+        }
+        return redirect(Route("login.index"));
     }
 }

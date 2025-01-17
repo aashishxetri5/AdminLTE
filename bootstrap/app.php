@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\EnsureAuthorizedAccess;
 use App\Http\Middleware\LoginMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'checkIfLoggedin' => LoginMiddleware::class,
+            'ensureAuthorizedAccess' => EnsureAuthorizedAccess::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -16,21 +16,19 @@
     <div class="app-wrapper">
 
         {{-- Navigation --}}
-        @include('pages.topbar')
+        @include('layouts.pages.topbar')
 
         {{-- Dashboard --}}
-        @include('pages.sidebar')
+        @include('layouts.pages.sidebar')
 
         {{-- Content Section --}}
         <main class="app-main">
             @yield('content')
         </main>
 
-
-        {{-- scripts --}}
-
     </div>
 
+    {{-- scripts --}}
     @include('layouts.metadata.scripts')
 </body>
 

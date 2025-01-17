@@ -3,6 +3,7 @@
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SignoutController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,11 +15,14 @@ Route::middleware('checkIfLoggedin')->group(function () {
     Route::resource('login', LoginController::class)->only('index', 'store');
 
     Route::resource('signup', SignupController::class)->only('index', 'store');
+
+    Route::get('/signout', [SignoutController::class, 'logout'])
+        ->name('signout');
 });
 
 Route::get('/dashboard', function () {
     return view('layouts.master');
-})->name('dashboard');
+})->name('dashboard')->middleware('ensureAuthorizedAccess');
 
 
 
