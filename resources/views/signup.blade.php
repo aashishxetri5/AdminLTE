@@ -42,110 +42,115 @@
         <div class="card col-md-4 mx-auto">
             <div class="card-body register-card-body">
                 <p class="register-box-msg">Register a new membership</p>
-                <form action="/signup" method="post">
-                    @csrf
-                    <!--begin::Row-->
-                    <div class="row g-3">
-                        <!--begin::Col-->
-                        <div class="col-md-6">
-                            <label for="validationCustom01" class="form-label">First name</label>
-                            <input type="text" class="form-control" name="firstname" id="validationCustom01"
-                                value="{{old('firstname')}}" />
-                            <div class="feedback">
-                                @error('firstname')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-md-6">
-                            <label for="validationCustom02" class="form-label">Last name</label>
-                            <input type="text" class="form-control" name="lastname" id="validationCustom02"
-                                value="{{old('lastname')}}" />
-                            <div class="feedback">
-                                @error('lastname')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-md-12">
-                            <label for="validationCustomUsername" class="form-label">Username</label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend"><b>@</b></span>
-                                <input type="text" class="form-control" name="username" id="validationCustomUsername"
-                                    aria-describedby="inputGroupPrepend" value="{{old('username')}}" />
-                            </div>
-                            <div class="feedback">
-                                @error('username')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <!--end::Col-->
 
-                        <!--begin::Col-->
-                        <div class="col-md-12">
-                            <label for="validationCustomPassword" class="form-label">Password</label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">
-                                    <i class="bi bi-key-fill"></i>
-                                </span>
-                                <input type="password" class="form-control" name="password"
-                                    id="validationCustomPassword" aria-describedby="inputGroupPrepend" />
-                            </div>
-                            <div class="feedback">
-                                @error('password')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <!--end::Col-->
-
-                        <!--begin::Col-->
-                        <div class="col-md-12">
-                            <label for="validationCustom03" class="form-label">City</label>
-                            <input type="text" class="form-control" name="city" id="validationCustom03"
-                                value="{{old('city')}}" />
-                            <div class="feedback">
-                                @error('city')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <!--end::Col-->
-
-                        <!--begin::Col-->
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" name="tnc" type="checkbox" id="invalidCheck"
-                                    {{old('tnc') ? 'checked' : ''}} />
-                                <label class="form-check-label" for="invalidCheck">
-                                    Agree to terms and conditions
-                                </label>
+                <div class="">
+                    <form action="/signup" method="post">
+                        @csrf
+                        <!--begin::Row-->
+                        <div class="row g-3">
+                            <!--begin::Col-->
+                            <div class="col-md-6">
+                                <label for="validationCustom01" class="form-label">First name</label>
+                                <input type="text" class="form-control" name="firstname" id="validationCustom01"
+                                    value="{{old('firstname')}}" />
                                 <div class="feedback">
-                                    @error('tnc')
+                                    @error('firstname')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-6">
+                                <label for="validationCustom02" class="form-label">Last name</label>
+                                <input type="text" class="form-control" name="lastname" id="validationCustom02"
+                                    value="{{old('lastname')}}" />
+                                <div class="feedback">
+                                    @error('lastname')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-12">
+                                <label for="validationCustomUsername" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend"><b>@</b></span>
+                                    <input type="text" class="form-control" name="username"
+                                        id="validationCustomUsername" aria-describedby="inputGroupPrepend"
+                                        value="{{old('username')}}" />
+                                </div>
+                                <div class="feedback">
+                                    @error('username')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!--end::Col-->
+
+                            <!--begin::Col-->
+                            <div class="col-md-12">
+                                <label for="validationCustomPassword" class="form-label">Password</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">
+                                        <i class="bi bi-key-fill"></i>
+                                    </span>
+                                    <input type="password" class="form-control" name="password"
+                                        id="validationCustomPassword" aria-describedby="inputGroupPrepend" />
+                                </div>
+                                <div class="feedback">
+                                    @error('password')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!--end::Col-->
+
+                            <!--begin::Col-->
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">City</label>
+                                <input type="text" class="form-control" name="city" id="validationCustom03"
+                                    value="{{old('city')}}" />
+                                <div class="feedback">
+                                    @error('city')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!--end::Col-->
+
+                            <!--begin::Col-->
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="tnc" type="checkbox" id="invalidCheck"
+                                        {{old('tnc') ? 'checked' : ''}} />
+                                    <label class="form-check-label" for="invalidCheck">
+                                        Agree to terms and conditions
+                                    </label>
+                                    <div class="feedback">
+                                        @error('tnc')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Col-->
                         </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                    <div class="row my-3">
-                        <!-- /.col -->
-                        <div class="col">
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Sign up</button>
+                        <!--end::Row-->
+                        <div class="row my-3">
+                            <!-- /.col -->
+                            <div class="col">
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Sign up</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /.col -->
-                    <!--end::Row-->
-                </form>
+                        <!-- /.col -->
+                        <!--end::Row-->
+                    </form>
+                </div>
+
                 <div class="social-auth-links text-center mb-3 d-grid gap-2">
                     <p>- OR -</p>
                     <a href="#" class="btn btn-primary">

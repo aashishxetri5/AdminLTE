@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'firstname' => 'Aashish',
-            'lastname' => 'Katwal',
-            'username' => 'aashish',
-            'password' => Hash::make('password'),
-            'city' => 'Kathmandu',
-            'tnc' => true,
-        ]);
+        // User::factory()->create([
+        //     'firstname' => 'Aashish',
+        //     'lastname' => 'Katwal',
+        //     'username' => 'aashish',
+        //     'password' => Hash::make('password'),
+        //     'city' => 'Kathmandu',
+        //     'tnc' => true,
+        // ]);
     }
 }
