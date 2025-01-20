@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin LTE | {{"Dynamic Title"}}</title>
+    <title>Admin LTE | @yield('title', 'Dashboard') </title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
     @includeFirst(['layouts.metadata.requirements'])

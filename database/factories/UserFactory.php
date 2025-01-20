@@ -27,8 +27,9 @@ class UserFactory extends Factory
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'username' => fake()->unique()->userName(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => Hash::make('password'),
             'city' => fake()->city(),
+            'profile' => 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp',
             'remember_token' => Str::random(10),
         ];
     }

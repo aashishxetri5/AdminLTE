@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ComplainController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignoutController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
@@ -24,14 +27,18 @@ Route::middleware('checkIfLoggedin')->group(function () {
 });
 
 Route::middleware('ensureAuthorizedAccess')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('layouts.master');
-    })->name('dashboard');
+    Route::resource('dashboard', DashboardController::class)->only('index');
 
     Route::resource('users', UserController::class)
         ->only('index', 'destroy', 'update', 'edit');
 
-    Route::get('/user/edit/{userId}', function ($userId) {
+    Route::resource('profile', ProfileController::class)
+        ->only('index');
 
-    });
+    Route::resource('complain', ComplainController::class)
+        ->only('index', 'store', 'showComplainList', 'destroy');
+
+    Route::get('/complains', [ComplainController::class, 'showComplainList'])
+        ->name('showComplains');
+
 });

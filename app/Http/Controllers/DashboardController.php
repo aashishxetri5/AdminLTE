@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('login');
+        $numberOfUsers = User::count();
+        
+        return view('content.dashboard', compact('numberOfUsers'));
     }
 
     /**
@@ -30,20 +30,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
-        ]);
-
-        $user = User::where('username', $request->username)->first();
-
-        if (!$user)
-            return redirect()->back()->with('error', "User doesn't exist");
-
-        if (!Hash::check($request->password, $user->password)) {
-            $request->session()->put('loggedInUser', $user->id);
-            return redirect('/dashboard');
-        }
+        //
     }
 
     /**

@@ -42,7 +42,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="/login" method="POST">
+                <form action="{{route('login.store')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <div class="input-group">

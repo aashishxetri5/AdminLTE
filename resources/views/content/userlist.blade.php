@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
-@section('content')
+@section('title')
+User Lists
+@endsection
 
+@section('content')
 <div class="app-content-header">
     <!--begin::Container-->
     <div class="container-fluid">

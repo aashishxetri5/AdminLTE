@@ -25,7 +25,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="/users" class="nav-link">
                         <i class="nav-icon bi bi-people"></i>
@@ -62,7 +62,7 @@
                         </li>
                     </ul>
                 </li> -->
-                
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-pencil-square"></i>
@@ -73,7 +73,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="forms" class="nav-link">
+                            <a href="{{route('complain.index')}}" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>General Form</p>
                             </a>
@@ -103,6 +103,13 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('showComplains')}}" class="nav-link">
+                        <i class="nav-icon bi bi-envelope"></i>
+                        <p>Complaints</p>
+                    </a>
                 </li>
 
                 <!-- <li class="nav-header">DOCUMENTATIONS</li>

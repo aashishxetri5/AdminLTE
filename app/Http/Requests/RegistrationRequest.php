@@ -24,7 +24,7 @@ class RegistrationRequest extends FormRequest
         return [
             "firstname" => ["required", "regex:/[a-zA-Z]+$/"],
             "lastname" => ["required", "regex:/[a-zA-Z]+$/"],
-            "username" => ["required"],
+            "email" => ["required", "email"],
             "password" => ["required", "min:5"],
             "city" => ["required"],
             "tnc" => ["required"],
@@ -38,7 +38,7 @@ class RegistrationRequest extends FormRequest
             'firstname.regex' => 'The first name can only contain letters',
             'lastname.required' => 'The last name is required',
             'lastname.regex' => 'The last name can only contain letters',
-            'username.required' => 'The username is required',
+            'email.required' => 'The email is required',
             'city.required' => 'The city is required',
             'state.nullable' => 'The state is optional',
             'zip.nullable' => 'The zip code is optional',

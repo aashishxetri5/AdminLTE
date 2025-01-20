@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('username')->unique();
             $table->string('password');
             $table->string('city');
+            $table->string('profile')->default('https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp');
             $table->boolean('tnc')->default(false);
             $table->rememberToken();
             $table->timestamps();

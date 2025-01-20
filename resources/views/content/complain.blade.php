@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+General Form
+@endsection
+
 @section('content')
 
 <div class="app-content-header">
@@ -8,12 +12,12 @@
         <!--begin::Row-->
         <div class="row">
             <div class="col-sm-6">
-                <h3 class="mb-0">General Form</h3>
+                <h3 class="mb-0">Complain Form</h3>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">General Form</li>
+                    <li class="breadcrumb-item active" aria-current="page">Complain</li>
                 </ol>
             </div>
         </div>
@@ -30,15 +34,29 @@
             <!--begin::Col-->
             <div class="col-md-6">
 
+                <div class="">
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            <p>{{session('error')}}</p>
+                        </div>
+                    @endif
+
+                    @if (session()->has(key: 'success'))
+                        <div class="alert alert-success">
+                            <p>{{session('success')}}</p>
+                        </div>
+                    @endif
+                </div>
+
                 <!--begin::Quick Example: Form 1-->
                 <div class="card card-primary card-outline mb-4">
                     <!--begin::Header-->
                     <div class="card-header">
-                        <div class="card-title">Quick Example</div>
+                        <div class="card-title">Your Complain</div>
                     </div>
                     <!--end::Header-->
                     <!--begin::Form-->
-                    <form action="{{route('forms.store')}}" method="POST">
+                    <form action="{{route('complain.store')}}" method="POST" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
                         <!--begin::Body-->
@@ -47,24 +65,34 @@
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" name="email"
                                     value="{{old('email')}}" aria-describedby="emailHelp" />
-                                <div id="emailHelp" class="form-text">
-                                    We'll never share your email with anyone else.
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="textarea">
+                                <label for="inputGroupTextarea" class="d-block">Details of your complain</label>
+                                <textarea class="form-control" name="details" id="inputGroupTextarea"
+                                    placeholder="What is your complain?">{{old('details')}}</textarea>
+                                @error('details')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="">
+                                <div class="d-block mt-2">
+                                    <label for="inputGroupFile02" class="form-label">Proof of Problem</label>
                                 </div>
+                                <div class="input-group mb-3">
+                                    <input type="file" name="file" class="form-control" id="inputGroupFile02" />
+                                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                </div>
+                                @error('file')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" value="{{old('password')}}"
-                                    id="exampleInputPassword1" />
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="file" name="randomFile" class="form-control" id="inputGroupFile02" />
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" name="tnc" class="form-check-input" id="exampleCheck1"
-                                    {{old('tnc') ? 'checked' : '' }} />
-                                <label class="form-check-label" for="exampleCheck1">I agree to all T&C</label>
-                            </div>
+
+
                         </div>
                         <!--end::Body-->
                         <!--begin::Footer-->
@@ -211,13 +239,4 @@
 </div>
 <!--end::App Content-->
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-@endif
-
-    @endsection
+@endsection

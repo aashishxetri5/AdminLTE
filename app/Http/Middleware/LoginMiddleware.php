@@ -21,7 +21,7 @@ class LoginMiddleware
             if ($request->path() === "signout") {
                 return $next($request);
             }
-            return redirect(Route("dashboard"));
+            return redirect(Route("dashboard.index"));
         } else
             return $next($request);
     }
