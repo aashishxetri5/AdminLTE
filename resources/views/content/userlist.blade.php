@@ -39,10 +39,7 @@
                             <th scope="col">Username</th>
                             <th scope="col">City</th>
                             <th scope="col">
-                                Delete
-                            </th>
-                            <th>
-                                Edit
+                                Action
                             </th>
                         </tr>
                     </thead>
@@ -56,20 +53,22 @@
                                 <td>{{"@"}}{{$user->username}}</td>
                                 <td>{{$user->city}}</td>
                                 <td class="text-center">
-                                    <form action="{{route("users.destroy", $user->id)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
+                                    <div class="d-flex gap-3 justify-content-center">
 
-                                        <button type="submit" class="text-danger bg-transparent border-0">
-                                            <span class="bi bi-trash-fill"> Delete</span>
-                                        </button>
-                                    </form>
-                                </td>
-                                <td class="text-center">
-                                    <a href="{{ route('users.edit', $user->id) }}"
-                                        class="text-danger bg-transparent border-0 text-decoration-none">
-                                        <span class="bi bi-pencil-square"> Edit </span>
-                                    </a>
+                                        <form action="{{route("users.destroy", $user->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="text-danger bg-transparent border-0">
+                                                <span class="bi bi-trash-fill"> Delete</span>
+                                            </button>
+                                        </form>
+
+                                        <a href="{{ route('users.edit', $user->id) }}"
+                                            class="text-danger bg-transparent border-0 text-decoration-none">
+                                            <span class="bi bi-pencil-square"> Edit </span>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

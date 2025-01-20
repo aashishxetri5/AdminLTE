@@ -57,7 +57,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
         } catch (Exception $e) {
             $user = null;
-            $error = 'User not found.';
+            $error = "User not found. for id = $id";
         }
         return view('content.edituser', compact('user', ['error']));
     }
