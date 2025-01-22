@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-General Form
+Complain Form
 @endsection
 
 @section('content')
