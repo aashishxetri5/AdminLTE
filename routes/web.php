@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignoutController;
@@ -40,5 +43,14 @@ Route::middleware('ensureAuthorizedAccess')->group(function () {
 
     Route::get('/complains', [ComplainController::class, 'showComplainList'])
         ->name('showComplains');
+
+    Route::resource('books', BookController::class)
+        ->only('index', 'create', 'store', 'show', 'edit', 'update', 'destroy');
+
+    Route::resource('authors', AuthorController::class)
+        ->only('index', 'store', 'edit', 'destroy', 'update');
+
+    Route::resource('genres', GenreController::class)
+        ->only('index', 'store', 'edit', 'destroy', 'update');
 
 });
