@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -31,18 +32,18 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required'],
+            'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        $user = User::where('username', $request->username)->first();
+        $user = User::where('email', $request->email)->first();
 
         if (!$user)
             return redirect()->back()->with('error', "User doesn't exist");
 
-        if (!Hash::check($request->password, $user->password)) {
-            $request->session()->put('loggedInUser', $user->id);
-            return redirect('/dashboard');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('dashboard.index');
         }
     }
 

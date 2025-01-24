@@ -31,7 +31,6 @@ class SignupController extends Controller
     {
         $signupCredentials = $request->validated();
 
-        $signupCredentials["password"] = bcrypt($signupCredentials["password"]);
         $signupCredentials['tnc'] = $request->has('tnc') ? 1 : 0;
         
         User::create($signupCredentials);

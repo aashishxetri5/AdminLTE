@@ -26,10 +26,11 @@ class UserFactory extends Factory
         return [
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
-            'username' => fake()->unique()->userName(),
-            'password' => Hash::make('password'),
+            'email' => fake()->unique()->email(),
+            'password' => 'password',
             'city' => fake()->city(),
             'profile' => 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp',
+            'role' => random_int(0, 1) == 1 ? 'ADMIN' : 'USER',
             'remember_token' => Str::random(10),
         ];
     }

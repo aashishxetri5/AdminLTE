@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -15,12 +16,21 @@ class UserController extends Controller
      */
     public function index()
     {
+        // if (Gate::allows("isAdmin")) {
+        //     return "You are an admin";
+        // } else {
+        //     return "You are not an admin";
+        // }
+
         try {
+            Gate::authorize("isAdmin");
             $users = User::paginate(5);
             return view('content.userlist', compact('users'));
         } catch (ModelNotFoundException $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            // return redirect()->back()->with('error', $e->getMessage());
+            echo '<h1 class=>Unauthorized Access</h1>';
         }
+
     }
 
     /**

@@ -36,4 +36,9 @@ class Book extends Model
     {
         return $this->belongsToMany(Genre::class, 'book_genre', 'book_id', 'genre_id');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'book_id', 'book_id');
+    }
 }

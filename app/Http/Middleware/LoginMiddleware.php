@@ -22,7 +22,7 @@ class LoginMiddleware
                 return $next($request);
             }
             return redirect(Route("dashboard.index"));
-        } else
-            return $next($request);
+        }
+        return $next($request);
     }
 }

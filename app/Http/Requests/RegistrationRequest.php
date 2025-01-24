@@ -39,6 +39,7 @@ class RegistrationRequest extends FormRequest
             'lastname.required' => 'The last name is required',
             'lastname.regex' => 'The last name can only contain letters',
             'email.required' => 'The email is required',
+            'email.email' => 'The email is invalid',
             'city.required' => 'The city is required',
             'state.nullable' => 'The state is optional',
             'zip.nullable' => 'The zip code is optional',

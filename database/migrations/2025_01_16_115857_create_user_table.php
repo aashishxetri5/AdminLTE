@@ -14,10 +14,11 @@ return new class extends Migration {
             $table->id('id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('city');
             $table->string('profile')->default('https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp');
+            $table->string('role')->default('USER');
             $table->boolean('tnc')->default(false);
             $table->rememberToken();
             $table->timestamps();

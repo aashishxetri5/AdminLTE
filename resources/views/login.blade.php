@@ -42,15 +42,17 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="{{route('login.store')}}" method="POST">
+                <form action="{{route('signin.store')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="username" placeholder="Username"
-                                value="{{old('username')}}" />
-                            <div class="input-group-text"><span class=""><b>@</b></span></div>
+                            <input type="email" class="form-control" name="email" placeholder="johndoe@example.com"
+                                value="{{old('email')}}" />
+                            <div class="input-group-text">
+                                <i class="bi bi-envelope-fill"></i>
+                            </div>
                         </div>
-                        @error('username')
+                        @error('email')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>

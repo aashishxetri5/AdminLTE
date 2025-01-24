@@ -21,10 +21,11 @@ class User extends Authenticatable
     protected $fillable = [
         'firstname',
         'lastname',
-        'username',
+        'email',
         'password',
         'city',
         'profile',
+        'role',
         'tnc'
     ];
 
@@ -47,12 +48,16 @@ class User extends Authenticatable
     {
         return [
             'password' => 'hashed',
-            'tnc'=> 'boolean',
         ];
     }
-
+    
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    public function reviews()
+    {
+        return $this->hashOne(Review::class);
     }
 }

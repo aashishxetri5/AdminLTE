@@ -74,15 +74,15 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-md-12">
-                                <label for="validationCustomUsername" class="form-label">Username</label>
+                                <label for="validationCustomUsername" class="form-label">Email</label>
                                 <div class="input-group has-validation">
                                     <span class="input-group-text" id="inputGroupPrepend"><b>@</b></span>
-                                    <input type="text" class="form-control" name="username"
+                                    <input type="email" class="form-control" name="email"
                                         id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-                                        value="{{old('username')}}" />
+                                        value="{{old('email')}}" />
                                 </div>
                                 <div class="feedback">
-                                    @error('username')
+                                    @error('email')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
